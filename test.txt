@@ -1,3 +1,0 @@
-test
-[*] This Is From Admin1
-[*] This Is From Admin2
