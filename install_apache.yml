@@ -1,0 +1,26 @@
+---
+- name: Install & Configure Apache
+  hosts: all
+  become: true  
+  user: student
+  vars:
+    ansible_become_pass: "student"
+  
+  pre_tasks:
+    - name: Update Apt Cache
+      apt:
+        update_cache: true
+        cache_valid_time: 3600
+
+  
+  handlers:
+   - name: run apache
+     service: name=apcahe2 state=started
+        
+  tasks:
+    - name: Install Apache Server
+      apt:
+        name: apache2
+        state: present
+      notify: run apache
+
