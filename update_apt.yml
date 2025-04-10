@@ -1,5 +1,19 @@
 ---
-- hosts: sub 
+- hosts: all 
+  become: true
+  user: student
+  vars:
+    ansible_become_pass: "student"
+
   tasks:
   - name: Update Apt Cahche
-    ansible.builtin.apt: update_cache=true cache_valid_time=3600
+    ansible.builtin.apt: 
+     update_cache: true 
+     cache_valid_time: 3600
+    when: ansible_distribution == "Ubuntu"
+    
+  - name: Update Dnf Cahche
+    ansible.builtin.dnf: 
+     update_cache: true 
+     cache_valid_time: 3600
+    when: ansible_distribution == "Almalinux"    
