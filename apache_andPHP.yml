@@ -14,8 +14,17 @@
       
       update_cache: yes
       state: latest
+     when: ansible_distribution == "Ubuntu"
+     
+   - name: install Apache2 and Php
+     apt:
+      name: 
+       - apache2
+       - libapache2-mod-php
       
-       
+      update_cache: yes
+      state: latest     
+     when: ansible_distribution == "Almalinux"    
 
 
    

@@ -13,4 +13,15 @@
        - libapache2-mod-php
       update_cache: yes
       state: absent
+     when: ansible_distribution == "Ubuntu"
+     
+   - name: Remove apache2
+     ansible.builtin.dnf:
+      name:
+       - apache2
+       - libapache2-mod-php
+      update_cache: yes
+      state: absent
+     when: ansible_distribution == "Almalinux"    
+
    
