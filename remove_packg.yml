@@ -1,0 +1,16 @@
+---
+ - hosts: all 
+   become: true
+   user: student
+   vars:
+    ansible_become_pass: "student"
+   tasks:
+   
+   - name: Remove apache2
+     apt:
+      name:
+       - apache2
+       - libapache2-mod-php
+      update_cache: yes
+      state: absent
+   

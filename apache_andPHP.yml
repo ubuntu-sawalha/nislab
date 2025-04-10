@@ -1,0 +1,21 @@
+---
+ - hosts: all
+   become: true
+   user: student
+   vars:
+    ansible_become_pass: "student"
+   tasks:
+   
+   - name: install Apache2 and Php
+     apt:
+      name: 
+       - apache2
+       - libapache2-mod-php
+      
+      update_cache: yes
+      state: latest
+      
+       
+
+
+   
